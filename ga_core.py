@@ -28,30 +28,32 @@ def evolve_generation(population_with_fitness, num_jobs, num_machines):
     """
     Evoluciona la población una generación.
     population_with_fitness es una lista de tuplas (cromosoma, makespan).
+    Devuelve una NUEVA lista de CROMOSOMAS (no tuplas).
     """
     # Ordenar por makespan (menor es mejor)
     population_with_fitness.sort(key=lambda x: x[1])
     
-    # Elitismo
-    new_population = [item for item in population_with_fitness]
+    # 1. Elitismo (Corregido: Usar ELITISM_COUNT)
+    # Guardamos los mejores cromosomas para la siguiente generación
+    new_population_chromosomes = [population_with_fitness[i][0] for i in range(settings.ELITISM_COUNT)]
     
-    # Selección de padres
+    # 2. Selección de padres (Corregido: 'parents' es una lista de cromosomas)
     parents = selection_tournament(population_with_fitness, settings.TOURNAMENT_SIZE)
     
-    # Creación de la nueva generación
-    while len(new_population) < settings.SUB_POPULATION_SIZE:
+    # 3. Creación de la nueva generación (Corregido: Rellenar el resto de la población)
+    while len(new_population_chromosomes) < settings.SUB_POPULATION_SIZE:
         p1, p2 = random.sample(parents, 2)
         
         # Cruce
         if random.random() < settings.CROSSOVER_RATE:
             child = crossover_jbx(p1, p2, num_jobs)
         else:
-            child = p1[:]
+            child = p1[:] # Clonar el padre 1
             
         # Mutación
         if random.random() < settings.MUTATION_RATE:
             child = mutation_swap(child)
             
-        new_population.append(child)
+        new_population_chromosomes.append(child)
         
-    return new_population
+    return new_population_chromosomes
