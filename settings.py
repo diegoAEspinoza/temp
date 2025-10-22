@@ -5,7 +5,7 @@
 TOTAL_POPULATION_SIZE = 512
 NUM_GENERATIONS = 1000
 CROSSOVER_RATE = 0.8
-MUTATION_RATE = 0.1
+MUTATION_RATE = 0.2
 TOURNAMENT_SIZE = 3
 ELITISM_COUNT = 2  # Número de individuos élite a conservar en cada generación por isla
 
@@ -18,8 +18,8 @@ MIGRATION_TOPOLOGY = "RING"
 
 # --- PARÁMETROS DEL PROBLEMA JSSP ---
 # Cambia esto para usar un benchmark diferente
-BENCHMARK_FILE = "benchmarks/ft06.txt"
-# BENCHMARK_FILE = "benchmarks/ta01.txt"
+#BENCHMARK_FILE = "benchmarks/ft06.txt"
+BENCHMARK_FILE = "benchmarks/ta01.txt"
 
 # --- VALIDACIÓN DE PARÁMETROS ---
 if TOTAL_POPULATION_SIZE % NUM_ISLANDS!= 0:

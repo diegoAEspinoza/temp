@@ -20,9 +20,9 @@ def main():
 
     # --- Carga de datos y configuración (cada proceso hace lo mismo) ---
     if rank == 0:
-        print("--- Algoritmo Genético Paralelo con Modelo de Islas para JSSP ---")
+        print("--- Algoritmo Genetico Paralelo con Modelo de Islas para JSSP ---")
         print(f"Problema: {settings.BENCHMARK_FILE}")
-        print(f"Configuración: {settings.NUM_ISLANDS} islas, {settings.SUB_POPULATION_SIZE} individuos/isla")
+        print(f"Configuracion: {settings.NUM_ISLANDS} islas, {settings.SUB_POPULATION_SIZE} individuos/isla")
         print(f"Generaciones: {settings.NUM_GENERATIONS}")
         print(f"Migración: Frecuencia={settings.MIGRATION_FREQUENCY}, Tasa={settings.MIGRATION_RATE*100}% ({settings.MIGRATION_COUNT} indiv.), Topología={settings.MIGRATION_TOPOLOGY}")
         print("-" * 60)
